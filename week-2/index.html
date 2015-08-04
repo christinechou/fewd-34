@@ -14,13 +14,36 @@
   }
 
   header {
-    position:fixed;
+    position: absolute;
     background-color: #c6c6c6;
     padding: 10px;
     margin-top:-100px;
     left: 0;
     width: 100%;
     border-radius: black;
+    }
+
+    div {
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      font-size:15px;
+      padding: 10px;
+      background-color: #2D59B5;
+      float: right;
+      width: 65px;
+      margin-right: 30px;
+      margin-top: 10px;
+    }
+
+    a {
+      text-shadow: grey 0 2px;
+      color: white;
+      float: right;
+      text-decoration: none;
+      margin-right: 30px;
+      margin-top: 20px;
+
     }
 
   main {
@@ -36,31 +59,11 @@
     border-radius: 10px;
     -moz-border-radius: 20px ;
     margin-bottom: 25px;
-    box-shadow:white;
+    box-shadow: 0 0 5px 2px #999;
     }
 
-  input {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    font-size:15px;
-    padding: 10px;
-    background-color: #2D59B5;
-    float: right;
-    width: 65px;
-    margin-right: 30px;
-    margin-top: 10px;
 
-  }
-  input[type="submit"] {
-    color:white;
-  }
-  .button {
-    float:right;
-    margin-right: 30px;
-    margin-top: 10px;
-    text-shadow: grey;
-  }
+
   hr {
     border: white;
     height:1px;
@@ -83,12 +86,14 @@
     </html>
 <header>
     <img src="http://cloud.avandamiri.com/image/423B1n2p2v0U/acme-corp.jpg" width="200">
-    <a href="http://www.fakesite.com/products" class="button">
+    <div class="Sign Up">
+      Sign Up
+    </div>
+
+    <a href="http://generalassembly.com">
       Products
     </a>
-    <a href="http://generalassembly.com" class="button1">
-      Sign Up
-    </a>
+
 
 
 </header>
