@@ -29,6 +29,16 @@
         width: 65px;
         margin-right: 30px;
         margin-top: 10px;
+        text-decoration: none;
+    }
+
+    .link-home {
+        text-shadow: grey 0 2px;
+        color: white;
+        float: right;
+        text-decoration: none;
+        margin-right: 30px;
+        margin-top: 20px;
     }
 
   .Products img {
@@ -36,20 +46,18 @@
       float: left;
   }
 
-
-  header a {
-      text-shadow: grey 0 2px;
-      color: white;
-      float: right;
-      text-decoration: none;
-      margin-right: 30px;
-      margin-top: 20px;
+  .link-addtocart {
+    background-color: blue;
+    color: white;
   }
 
   main a {
-      border-radius: 4px !important;
-      border-color: blue;
+      border-radius: 4px;
+      border: 1px solid blue;
+      margin-right: 10px;
+      padding: 4px 7px 4px 7px;
       text-decoration: none;
+      color: blue;
   }
 
 
