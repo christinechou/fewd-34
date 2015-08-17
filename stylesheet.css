@@ -58,9 +58,8 @@
       padding: 4px 7px 4px 7px;
       text-decoration: none;
       color: blue;
+      overflow: auto;
   }
-
-
 
   main {
     text-align:left;
@@ -82,9 +81,7 @@
     overflow: auto;
   }
 
-  li {
 
-  }
     img {
       margin-right: 15px;
       width: 200px;
