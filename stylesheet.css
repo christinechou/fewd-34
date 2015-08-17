@@ -20,7 +20,8 @@
 
     .link-signup {
         border-radius: 4px;
-        color:white;
+        border: 1px solid black;
+        color: white;
         text-align: center;
         font-size:15px;
         padding: 10px;
@@ -30,10 +31,11 @@
         margin-right: 30px;
         margin-top: 10px;
         text-decoration: none;
+        text-shadow: none;
     }
 
-    .link-home {
-        text-shadow: grey 0 2px;
+    header a {
+        text-shadow: 1px 1px 0px grey;
         color: white;
         float: right;
         text-decoration: none;
@@ -85,6 +87,44 @@
     img {
       margin-right: 15px;
       width: 200px;
+  }
+
+  label {
+    display: block;
+  }
+
+  input {
+    border-radius: 2px;
+    border: 2px solid #FFB8C0;
+    margin-top: 20px;
+    padding: 5px;
+    position: relative;
+    font-size: 13px;
+    width: 170px;
+  }
+
+  .checkbox {
+    width: 25px;
+  }
+
+  input:valid {
+    border: 1px solid green;
+  }
+
+  input:invalid {
+    border: 1px solid #FFB8C0;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #FFB8C0;
+    box-shadow: 0 0 10px #B2FFF1;
+  }
+
+  button {
+    display:block;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 
   hr {
