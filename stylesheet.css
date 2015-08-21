@@ -90,7 +90,7 @@
   }
 
   label {
-    display: block;
+    position: absolute;
   }
 
   input {
@@ -98,6 +98,7 @@
     border: 2px solid #FFB8C0;
     margin-top: 20px;
     padding: 5px;
+    display: inline-block;
     position: relative;
     font-size: 13px;
     width: 170px;
@@ -119,6 +120,10 @@
     outline: none;
     border-color: #FFB8C0;
     box-shadow: 0 0 10px #B2FFF1;
+  }
+
+  .input-checkbox {
+    width: 20px;
   }
 
   button {
