@@ -26,22 +26,21 @@
   <script>
     function addListItem() {
       //prompt for a todo, save the result
-      var text = prompt("What do you want to do today?");
+      var newItem = prompt("What do you want to do today?");
       //create li event
-      var list = document.queryselector("#todo-list");
+      var list = document.querySelector("#todo-list");
       //create ul in variable
-      var item = document.createElement("li");
+      var listItem = document.createElement("li");
       //append li to ul variable
-      item.textContent = text;
+      listItem.textContent = newItem;
       //set the prompt result to the li's text content
-      list.appendChild(item);
+      list.appendChild(listItem);
 
       // 1. prompt for a todo and save the result --> var text = prompt("what do you need to do today?")
       // 2. create li element                     -> document.createElement()
       // 4. save ul in variable                   -> var list= ?
       // 5. append li to ul variable               -> list.appendChild()
       // 5. set the prompt result to the li's text content
-
     };
   </script>
 </div>
