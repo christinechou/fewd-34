@@ -25,8 +25,30 @@
 
   <script>
     function addListItem() {
-      //prompt for a todo, save the result
+
+      // 1. prompt for a todo and save the result --> var text = prompt("what do you need to do today?")
+      // 2. create li element                     -> document.createElement()
+      // 4. save ul in variable                   -> var list= ?
+      // 5. append li to ul variable               -> list.appendChild()
+      // 5. set the prompt result to the li's text content
+
+
+
+      //saving result of prompt asking what you want to do today
       var newItem = prompt("What do you want to do today?");
+
+      //if user does not put a response
+      if (newItem === "") {
+        return;
+      }
+
+      //if user presses cancel
+      else if (newItem === null){
+        return;
+      }
+
+      //if user does enter a response
+      else {
       //create li event
       var list = document.querySelector("#todo-list");
       //create ul in variable
@@ -35,12 +57,7 @@
       listItem.textContent = newItem;
       //set the prompt result to the li's text content
       list.appendChild(listItem);
-
-      // 1. prompt for a todo and save the result --> var text = prompt("what do you need to do today?")
-      // 2. create li element                     -> document.createElement()
-      // 4. save ul in variable                   -> var list= ?
-      // 5. append li to ul variable               -> list.appendChild()
-      // 5. set the prompt result to the li's text content
+      }
     };
   </script>
 </div>
@@ -62,8 +79,25 @@
 
   <script>
   function addImage() {
+    //1.  prompt for img source, width, and height and save them the results
+    //2.  insert anchor into div
+    //3.  set the img as part of the anchor
+    //4.  add the anchor to the div
 
-  }
+    var addImage = prompt("Where does your image live?");
+
+    //return if no value
+    if (addImage === null) {
+      return;
+    }
+
+    else {
+      var anchor = document.createElement("img");
+      anchor.setAttribute("src","https://pbs.twimg.com/profile_images/378800000532546226/dbe5f0727b69487016ffd67a6689e75a.jpeg");
+    };
+    }
+
+
   </script>
 </div>
 
