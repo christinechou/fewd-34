@@ -79,7 +79,6 @@
 
   ol {
     list-style: none;
-    display: block;
     overflow: auto;
   }
 
@@ -88,9 +87,11 @@
       margin-right: 15px;
       width: 200px;
   }
+  //Sign Up Page
 
   label {
-    position: absolute;
+    display:inline-block;
+    mid-width: 200px;
   }
 
   input {
@@ -98,8 +99,6 @@
     border: 2px solid #FFB8C0;
     margin-top: 20px;
     padding: 5px;
-    display: inline-block;
-    position: relative;
     font-size: 13px;
     width: 170px;
   }
@@ -126,11 +125,14 @@
     width: 20px;
   }
 
+
   button {
     display:block;
     margin-top: 20px;
     margin-bottom: 30px;
   }
+
+//end of Sign-up Page
 
   hr {
     border-style:inset;
