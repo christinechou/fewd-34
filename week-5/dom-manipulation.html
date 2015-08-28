@@ -78,24 +78,29 @@
   </div>
 
   <script>
-  function addImage() {
+  function addImage(imagesrc, setWidth, setHeight) {
     //1.  prompt for img source, width, and height and save them the results
     //2.  insert anchor into div
     //3.  set the img as part of the anchor
     //4.  add the anchor to the div
 
-    var addImage = prompt("Where does your image live?");
+    var imagesrc = prompt("Where does your image live?"); //imagesrc will be a string
+    var setWidth = prompt("How wide?");
+    var setHeight = prompt("How tall?");
 
     //return if no value
-    if (addImage === null) {
+    if ((imagesrc === null) || (setWidth === null) || (setHeight === null)) {
       return;
     }
-
+    //if values... (how do we set root src of image as variable)
     else {
-      var anchor = document.createElement("img");
-      anchor.setAttribute("src","https://pbs.twimg.com/profile_images/378800000532546226/dbe5f0727b69487016ffd67a6689e75a.jpeg");
+      var image = document.createElement("img"); //img stands for the "element" ->
+      image.setAttribute("src",imagesrc);
+      document.getElementById("image").appendChild(image); //image is referring to the div id above.   use # only for querySelector.
+      image.setAttribute("width",setWidth);
+      image.setAttribute("height",setHeight);
     };
-    }
+  }
 
 
   </script>
@@ -116,8 +121,14 @@
 
   <script>
   function makeBold() {
+
     // Your code goes here.
-  }
+    // 1. select the element from where you want to change the attribute, call it something
+    // 2. change that something element to be bold
+   var texttobold = document.querySelector("#make-me-bold");
+  
+   texttobold.style.fontWeight = "bold";
+}
   </script>
 </div>
 </body></html>
