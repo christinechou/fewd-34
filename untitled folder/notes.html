@@ -1,0 +1,103 @@
+// week 7 class 1
+9/1/15
+
+LIKE
+1. when click ".like" (<--referring to element on that page with that class)
+//document.querySelector(".like-count").textContent
+
+2. grab text content of ".like-count"
+3. parse text content as int
+4. increase by one
+5. insert back as IC (like count)
+
+
+===================
+
+button.like
+//(like button)
+<button class="like">
+  Like
+</button>
+
+
+Event (circumstances around the event)
+- timestamp
+- target (10 elements on the page, know which one was clicked)
+- CTRL ?
+- SHIFT (know when these were being pressed)
+- which key was pressed?
+
+- preventDefault()
+
+
+// a, button -> "click"
+// form -> "submit"
+
+// (adding in event.preventDefault() in todo list assignment)
+// when you write a function that handles an event (aka is a call back function), just give it one parameter called "event".
+//if the event submits a form then the next line:  event.preventDefault();
+
+// like() -> function AKA callback / event handler -> never call function manually.
+// when the click occurs    chrome: like()
+
+function like() {
+  //
+}
+
+===============================
+var n = 1;
+var s = "Avand";
+var e = document.querySelector("...")
+var a = [1, 2, 3] <--opens and closes with brackets & separates values with "," & zero-based (starts with 0)
+
+Regex        Nums      Strings                     Boolean      Array
+/.*@.com/   1,2,3     "avand", "#todo-list"       true/false      []
+
+Array
+- length
+- forEach()
+- pop()
+- push()
+
+A.length
+. = "of"
+length "of" a; a's 'length
+
+          0       1         2
+cars = ["bmw", "porsche", "audi"]
+cars[2] = "audi"
+
+cars[cars.length = 1] = 3-1 = cars[2]
+^ calls the last value (hack!)
+
+
+var gums = [
+{brand: "hubba bubba", chew: function() {..}}
+{brand: "wrigleys", chew: function() {..}}
+{brand: "bubbalicious", chew: function() {..}}
+]
+goal is to chew all the gum
+
+gums[0].chew()
+gums[1].chew()
+
+
+function chewGum (gum) {        <--chewGum(gum) will be called 3 times
+  chewGum(gums[0]);
+  gum.chew();
+}
+
+gums.forEach(chewGum);
+^array          ^callback
+
+
+Array
+1. name should be plural (noun)
+"movies", "todos", "items"
+2. loop: create a function that takes the singular form as a parameter
+3. wire up forEach
+  array.forEach(function)
+
+e.g., var movies = [...]
+rateMovie(movie)
+movies.forEach(rateMovie)

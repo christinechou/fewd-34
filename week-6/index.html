@@ -1,0 +1,47 @@
+<div class="comment">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+<div class="triangle">
+</div>
+
+<div class="comment">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+<div class="comment">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+<style>
+
+body {
+  font-size: 20px;
+}
+
+.comment {
+  background-color: #bce7e8;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.triangle {
+  display:block;
+  width: 0;
+  height: 0;
+  border: 1em solid transparent;
+  border-top: #bce7e8;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.comment::after{
+  content:"Hello there!";
+}
+
+@media (max-width:500px) {
+  body {
+    font-size: 9px;
+  }
+}
+  //media query of anything that has a max-width of 500, take action on these too!
+</style>
