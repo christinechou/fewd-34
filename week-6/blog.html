@@ -7,7 +7,7 @@
     <style>
       * { box-sizing: border-box; }
       body {
-        background: url("../photos/mountains.jpg");
+        background: #DEF8FA;
         margin: 0;
         font-family: sans-serif;
         font-size: 18px;
@@ -35,7 +35,7 @@
       a {
         font-weight: bold;
         text-decoration: none;
-        color: #049cd8;
+        color: #9CEAED;
       }
       a:hover {
         text-decoration: underline;
@@ -105,13 +105,38 @@
 
     <script>
       // Your code goes here.
-      function like(something) {
-        var likeCount = document.querySelector(".like-count")
-        var newNumber = parseInt(likeCount) + 1;
-        debugger
+      var clickLike = document.querySelector(".like-link");
 
-        likeCount.textContent = newNumberOfLikes;
-      }
+      clickLike.addEventListener("click", function(event) {
+        event.preventDefault();
+        var likeCount = document.querySelector(".like-count");
+        var newNumberofLikes = parseInt(likeCount.textContent) + 1;
+        likeCount.textContent = newNumberofLikes;
+
+}
+)
+
+
+      //  answer
+      //  var entertask = document.querySelector('.button')
+        //entertask.addEventListener('click', addlistItem);
+
+      //  function addListItem() {
+      //    var katie = document.querySelector('.startofList');
+      //    var item = document.createElement("li");
+      //    var text = document.querySelector('.text').value;
+
+    //      item.textContent = text;
+    //      katie.appendChild(item);
+    //      document.getElementByID("input").value=""; //only looks things up by ID, query selector is more modeern
+    //    }
+
+    //  function incrementValue()
+    //    {
+    //      var thingsToSay = document.querySelector('#input');
+    //      var value = parseInt(document.getELementbyID('number').value = value++);
+
+    //    }
 
 
     </script>
