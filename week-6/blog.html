@@ -104,7 +104,7 @@
     </main>
 
     <script>
-      // Your code goes here.
+  // adds #s to likes as you click the like link
       var clickLike = document.querySelector(".like-link");
 
       clickLike.addEventListener("click", function(event) {
@@ -112,31 +112,26 @@
         var likeCount = document.querySelector(".like-count");
         var newNumberofLikes = parseInt(likeCount.textContent) + 1;
         likeCount.textContent = newNumberofLikes;
+      }
+    )
 
-}
-)
+// add comments
+  var commentArea = document.querySelector("#comments");
+  var commentText =  document.querySelector("#new-comment-body");
 
+var clickCommentButton = document.querySelector("button");
 
-      //  answer
-      //  var entertask = document.querySelector('.button')
-        //entertask.addEventListener('click', addlistItem);
+clickCommentButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  var commentPost = document.createElement("div");
+  // setting the div class to comment. Below code also be commentPost.setAttribute("class","comment");
+  commentPost.classList.toggle("comment");
+  commentPost.textContent = commentText.value;
 
-      //  function addListItem() {
-      //    var katie = document.querySelector('.startofList');
-      //    var item = document.createElement("li");
-      //    var text = document.querySelector('.text').value;
+  commentArea.appendChild(commentPost);
 
-    //      item.textContent = text;
-    //      katie.appendChild(item);
-    //      document.getElementByID("input").value=""; //only looks things up by ID, query selector is more modeern
-    //    }
+})
 
-    //  function incrementValue()
-    //    {
-    //      var thingsToSay = document.querySelector('#input');
-    //      var value = parseInt(document.getELementbyID('number').value = value++);
-
-    //    }
 
 
     </script>

@@ -68,7 +68,45 @@
       }
     ];
 
-    document.querySelector("#list-movies").addEventListener("click", listMovies);
+    document.querySelector("#list-movies").addEventListener("click", listMoviesButton);
+
+    var listMoviesButton = document.querySelector("#list-movies");
+
+    listMoviesButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    var ul = document.querySelector("#movies");
+    var listItem = document.createElement("li");
+    var movieTitleDiv = document.createElement("div");
+    var movieReleaseDateDiv = document.createElement("div");
+    var movieImageDiv = document.createElement("img");
+
+    movieTitleDiv.textContent = movies[0].title;
+    movieReleaseDateDiv.textContent = movies[0].releaseDate;
+    movieImageDiv.textContent = movies[0].image;
+
+    ul.appendChild(listItem);
+    listItem.appendChild(movieTitleDiv);
+    listItem.appendChild(movieReleaseDateDiv);
+    listItem.appendChild(movieImageDiv);
+
+    listItem.classList.add("movie");
+    movieTitleDiv.classList.add("movie-title");
+    movieReleaseDateDiv.classList.add("movie-release-date");
+
+    movieImageDiv.setAttribute("src",movies[0].image)
+
+  })
+
+
+  // function displayMovie(movie) {
+  // var list = document.querySelector("#movies");
+  // var item = document.createElement("li");
+  // list.appendChild(item);
+  // var title = document.createElement("div");
+  // title.textContent = movie.title;
+  // item.appendChild(title)
+
+
     </script>
   </body>
 </html>
