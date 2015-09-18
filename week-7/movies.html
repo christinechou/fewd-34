@@ -42,6 +42,15 @@
     <button id="list-movies">listMovies()</button>
 
     <ul id="movies">
+      <li class= "movie">
+
+        <img src= "http://ia.media-imdb.com/images/M/MV5BMjMxMTQ3MzMwMV5BMl5BanBnXkFtZTgwNTYxNzYxMTE@._V1_SY317_CR0,0,214,317_AL_.jpg">
+        <div class = "movie-title">
+          Cool Runnings
+        </div>
+      </li>
+
+
       <!--li class="movie">
         <img src="http://ia.media-imdb.com/images/M/MV5BMjMxMTQ3MzMwMV5BMl5BanBnXkFtZTgwNTYxNzYxMTE@._V1_SY317_CR0,0,214,317_AL_.jpg">
         <div class="movie-title">Cool Runnings</div>
@@ -68,7 +77,6 @@
       }
     ];
 
-    document.querySelector("#list-movies").addEventListener("click", listMoviesButton);
 
     var listMoviesButton = document.querySelector("#list-movies");
 
@@ -91,9 +99,12 @@
     movieImageDiv.textContent = movie.image;
 
     ul.appendChild(listItem);
+    
+  // had to put image first to get it to float left!
+    listItem.appendChild(movieImageDiv);
     listItem.appendChild(movieTitleDiv);
     listItem.appendChild(movieReleaseDateDiv);
-    listItem.appendChild(movieImageDiv);
+
 
     listItem.classList.add("movie");
     movieTitleDiv.classList.add("movie-title");
