@@ -72,7 +72,13 @@
 
     var listMoviesButton = document.querySelector("#list-movies");
 
-    listMoviesButton.addEventListener("click", function(event) {
+    listMoviesButton.addEventListener("click", displayMovies)
+
+    function displayMovies(event) {
+      event.preventDefault();
+      movies.forEach(printMovies);
+    }
+    function printMovies(movie) {
     event.preventDefault();
     var ul = document.querySelector("#movies");
     var listItem = document.createElement("li");
@@ -80,9 +86,9 @@
     var movieReleaseDateDiv = document.createElement("div");
     var movieImageDiv = document.createElement("img");
 
-    movieTitleDiv.textContent = movies[0].title;
-    movieReleaseDateDiv.textContent = movies[0].releaseDate;
-    movieImageDiv.textContent = movies[0].image;
+    movieTitleDiv.textContent = movie.title;
+    movieReleaseDateDiv.textContent = movie.releaseDate;
+    movieImageDiv.textContent = movie.image;
 
     ul.appendChild(listItem);
     listItem.appendChild(movieTitleDiv);
@@ -93,9 +99,9 @@
     movieTitleDiv.classList.add("movie-title");
     movieReleaseDateDiv.classList.add("movie-release-date");
 
-    movieImageDiv.setAttribute("src",movies[0].image)
+    movieImageDiv.setAttribute("src",movie.image)
 
-  })
+  }
 
 
   // function displayMovie(movie) {
