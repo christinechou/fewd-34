@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Movie Search</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        font-family: Arial;
+        margin: 0;
+        background: #f1f0f5;
+        font-family: sans-serif;
+        font-size: 18px;
+        line-height: 1.4em;
+      }
+      main {
+        margin: 2em auto;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        background: white;
+        padding: 2em 3em;
+        max-width: 600px;
+      }
+      input,
+      button {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom-width: 2px;
+        border-radius: 5px; font-size: inherit;
+        padding: .5em 1em;
+        cursor: pointer;
+      }
+      input {
+        width: 70%;
+      }
+      button {
+        color: white;
+        width: 28%;
+        background-color: #04d78b;
+      }
+      a {
+        color: #099c67;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      #movies {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .movie {
+        overflow: auto;
+        margin-top: 0.8em;
+        padding: 0.2em 0 0.8em;
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .movie:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .movie img {
+        float: left;
+        width: 100px;
+        margin-right: 20px;
+      }
+      .movie-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: .2em;
+      }
+      .movie-release-date {
+        color: #b6b6b6;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form id="movie-search-form">
+        <input type="text" id="query" placeholder="Movie title">
+        <button type="submit">Search</button>
+      </form>
+
+      <ul id="movies">
+
+
+        <!--li class="movie">
+          <div class="movie-title">
+            <a href="http://www.imdb.com/title/tt0106611" target="_blank">
+              Cool Runnings
+            </a>
+          </div>
+          <div class="movie-release-date">1993</div>
+        </li-->
+      </ul>
+    </main>
+
+    <script>
+    var sampleResult = {
+      "Search": [
+        {
+          "Title": "Cool Runnings",
+          "Type": "movie",
+          "Year": "1993",
+          "imdbID": "tt0106611"
+        }
+      ]
+    }
+    //
+    var form = document.querySelector("#movie-search-form");
+    form.addEventListener("submit", formSubmitted);
+    // // jQuery equivalent $("#movie-search-form").on("submit")...
+    //
+    function formSubmitted(event) {
+      event.preventDefault();
+      // alert(document.querySelector("#query").value); (for testing)
+      var query = document.querySelector("#query").value;
+      //$("#query").val()
+      var url = "http://omdbapi.com/?s=" + query;
+      $.get(url, resultsAreBack)
+    }
+
+    function resultsAreBack (results) {
+      results["Search"].forEach(displayMovie)
+    }
+
+
+
+    function displayMovie(movie) {
+
+      var listItem = document.createElement("li"); //$("<li>")
+      var titleDivItem = document.createElement("div"); //$("<a>")
+      var linkDivItem = document.createElement("a"); //$("<div>")
+      var dateDivItem = document.createElement("div");
+
+      linkDivItem.textContent = movie["Title"]; //sampleResult["Search"]["Title"] only works for one, not forEach --> when input displayMovie(sampleResult["Search"][0]) into console, prints the first movie title in search results
+      dateDivItem.textContent = movie["Year"];
+
+      listItem.appendChild(titleDivItem);
+      listItem.appendChild(dateDivItem);
+
+      listItem.classList.add("movie");
+      titleDivItem.classList.add("movie-title");
+      dateDivItem.classList.add("movie-release-date");
+
+
+      linkDivItem.setAttribute("href", "http://www.imdb.com/title/" + sampleResult["Search"]["imdbID"]);
+      linkDivItem.setAttribute("target", "_blank");
+
+      listItem.appendChild(titleDivItem);
+      listItem.appendChild(dateDivItem);
+      titleDivItem.appendChild(linkDivItem);
+      document.querySelector("#movies").appendChild(listItem);
+
+    }
+
+
+    // Your code here!
+    </script>
+  </body>
+</html>
