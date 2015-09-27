@@ -3,7 +3,6 @@
 
 <!-- https://maps.googleapis.com/maps/api/timezone/json?location= (x) , (y) &timestamp=(z)&key=AIzaSyDeEOc-wsBv1tO1PjW3yq5SuR1GiPVjMRM -->
 
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,13 +11,9 @@
 
 
       <!-- My own stylesheet -->
-      <link rel="stylesheet" href="../stylesheetproject.css" media="screen">
+      <link rel="stylesheet" href="stylesheetproject.css" media="screen">
 
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -33,32 +28,72 @@
     header {
       font-family: 'lato', cursive;
       font-size:20px;
-      line-height: 1;
+      vertical-align: middle;
+      line-height: 0px;
       position: fixed;
-      background-color: #c2f4e7;
-      padding: 20px;
+      padding: 0px;
+      text-align: center;
       top:0;
       left: 0;
       width: 100%;
       border-width: 0px 0px 1px 0px;
-      border: 1px solid #81bdad;
-      box-shadow: 0 1px 3px
-        rgba(0, 0, 0, 0.2)
+      box-shadow: 0 0 16px 0 rgba(50, 50, 50, 0.3);
+      color: #484848;
         }
+    header h3 {
+      display:inline-block;
+      line-height: 10px;
+      top:50%;
+      transform: translateY(-20%);
+    }
+    header img {
+      float:center;
+      line-height: 10px;
+      top:50%;
+      transform: translateY(15%);
     }
 
     body {
-       width: 80%;
-       height: 100%;
-       font-size: 13px;
-       line-height: 1.2;
-       font-family: 'Roboto', sans-serif;
+
+    }
+
+    main {
+        margin-top: 100px;
+        font-family: 'Roboto', sans-serif;
+        width: 80%;
+        height: 100%;
+        font-size: 14px;
+        line-height: 1.15;
+        max-width: 600px;
+        min-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     form {
-      dispaly: inline;
+      text-align: center;
     }
 
+    input {
+      background: #f5f5f5;
+      width: 300px;
+      font-family: "roboto";
+      padding: 10px;
+      font-size: 15px;
+      box-shadow: none;
+      border: 0px;
+    }
+    button {
+      padding: 10px;
+      font: 14px  "Roboto", sans-serif white;
+      color: white;
+      background: #b4b4b4;
+      border:  none;
+    }
+    li {
+      list-style-type: none;
+
+    }
 
 
     </style>
@@ -67,7 +102,7 @@
 
   <body>
     <header>
-      World Clock
+      <img src="photos/world.png" height=40px widgth=40px> <h3> World Clock</h3>
     </header>
     <main>
 
@@ -78,14 +113,14 @@
 
     <ul class="cities">
       <li class="city">
-      <div class="cityName" style="display:inline-block; min-width:160px;">
+      <div class="cityName" style="display:inline-block; min-width:200px;">
       San Francisco, United States
       </div>
       <p class="localTime" style="display:inline-block"> 3:45:02 Pacific Time </p>
       </div>
 
       <li class="city">
-      <div class="cityName" style="display:inline-block; min-width:160px;">
+      <div class="cityName" style="display:inline-block; min-width:200px;">
       Sydney, Australia
       </div>
       <p class="localTime" style="display:inline-block"> 5:30:55 Australian? Time </p>
@@ -102,24 +137,34 @@
   // create variable that stores form text.
   // print city name to screen
 
-  var city = document.querySelector("#formAddCity");
+  var form = document.querySelector("button");
 
-  var cityObject = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city.value;
+  form.addEventListener("click", function(event) {
+  event.preventDefault();
+  var city = document.querySelector("#query").value;
+  var citySearch = "https://maps.googleapis.com/maps/api/geocode/json?address="+city+"AIzaSyDMt5ED9spdeBxRVODEygE4Jx3gxzsDSB8";
+  var cityLongitude = "https://maps.googleapis.com/maps/api/geocode/json?address="+city+"AIzaSyDMt5ED9spdeBxRVODEygE4Jx3gxzsDSB8";
+  cityLongitude.results[0].geometry.location.lng
+  alert(cityLongitude)
+  var timezone = "https://maps.googleapis.com/maps/api/timezone/json?location="+cityLatitude +","+cityLongitude+"&timestamp=1331766000&key=AIzaSyBO51LsLFuXzH-euSxgo6jP28u0TKWF9rQ"
+  $.get(cityObject, addCity)
+})
 
-  $.get(cityObject, returnCoordinates)
 
-function returnCoordinates (results) {
-  cityObject.results[0].geometry.location.lat
+
+function calcLatitude (results) {
+  results[0].geometry.location.lat.forEach(inputLatitude)
+
+function inputLatitude(latitude) {
+  alert(calcLatitude)
 }
 
-  var cityLongitude = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city
-  cityObject.results[0].geometry.location.lng
-
-  var timezone = "https://maps.googleapis.com/maps/api/timezone/json?location=" + cityLatitude + "," + cityLongitude + "&timestamp=1331766000&key=AIzaSyBO51LsLFuXzH-euSxgo6jP28u0TKWF9rQ"
+  alert(cityLongitude)
 
   var dstOffset = timezone.dstOffset
   var rawOffset = timezone.rawOffset
   var timeZoneID = timezone.timeZoneId
+}
 
   </script>
 
