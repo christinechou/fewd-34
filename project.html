@@ -1,0 +1,101 @@
+<!-- project idea: time zone  -->
+<!-- api key for browser: AIzaSyCh0mit17iIIdnGA5Dcp1yyVZyN6z86tCc -->
+
+<!-- https://maps.googleapis.com/maps/api/timezone/json?location= (x) , (y) &timestamp=(z)&key=AIzaSyDeEOc-wsBv1tO1PjW3yq5SuR1GiPVjMRM -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>When in the World?</title>
+
+    
+      <!-- My own stylesheet -->
+      <link rel="stylesheet" href="../stylesheetproject.css" media="screen">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <style>
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      World Clock
+    </header>
+    <main>
+
+      <form id="formAddCity">
+        <input type="text" id="query" placeholder="San Francisco">
+        <button type = "submit">Add</button>
+      </form>
+
+    <ul class="cities">
+      <li class="city">
+      <div class="cityName" style="display:inline-block; min-width:160px;">
+      San Francisco, United States
+      </div>
+      <p class="localTime" style="display:inline-block"> 3:45:02 Pacific Time </p>
+      </div>
+
+      <li class="city">
+      <div class="cityName" style="display:inline-block; min-width:160px;">
+      Sydney, Australia
+      </div>
+      <p class="localTime" style="display:inline-block"> 5:30:55 Australian? Time </p>
+      </div>
+
+    </ul>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </main>
+
+
+  <script type="text/javascript">
+
+  // when the user submits a city name, print (1) city name and (2) local time with offset on screen. compares times of the whole 24-hour day to that of other cities
+  // create variable that stores form text.
+  // print city name to screen
+
+  var city = document.querySelector("#formAddCity");
+
+  var cityObject = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city.value;
+
+  $.get(cityObject, returnCoordinates)
+
+function returnCoordinates (results) {
+  cityObject.results[0].geometry.location.lat
+}
+
+  var cityLongitude = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city
+  cityObject.results[0].geometry.location.lng
+
+  var timezone = "https://maps.googleapis.com/maps/api/timezone/json?location=" + cityLatitude + "," + cityLongitude + "&timestamp=1331766000&key=AIzaSyBO51LsLFuXzH-euSxgo6jP28u0TKWF9rQ"
+
+  var dstOffset = timezone.dstOffset
+  var rawOffset = timezone.rawOffset
+  var timeZoneID = timezone.timeZoneId
+
+  </script>
+
+  </body>
+</html>

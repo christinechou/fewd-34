@@ -87,11 +87,12 @@
       margin-right: 15px;
       width: 200px;
   }
-  //Sign Up Page
+
+  /*Sign Up page*/
 
   label {
     display:inline-block;
-    mid-width: 200px;
+  
   }
 
   input {

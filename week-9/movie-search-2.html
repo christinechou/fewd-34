@@ -116,7 +116,7 @@
     //
     function formSubmitted(event) {
       event.preventDefault();
-      // alert(document.querySelector("#query").value); (for testing)
+    
       var query = document.querySelector("#query").value;
       //$("#query").val()
       var url = "http://omdbapi.com/?s=" + query;
@@ -147,7 +147,7 @@
       dateDivItem.classList.add("movie-release-date");
 
 
-      linkDivItem.setAttribute("href", "http://www.imdb.com/title/" + sampleResult["Search"]["imdbID"]);
+      linkDivItem.setAttribute("href", "http://www.imdb.com/title/" + movie["imdbID"]);
       linkDivItem.setAttribute("target", "_blank");
 
       listItem.appendChild(titleDivItem);
