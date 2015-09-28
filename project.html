@@ -13,10 +13,6 @@
       <!-- My own stylesheet -->
       <link rel="stylesheet" href="stylesheetproject.css" media="screen">
 
-
-
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
       <!-- Fonts -->
@@ -37,7 +33,7 @@
       left: 0;
       width: 100%;
       border-width: 0px 0px 1px 0px;
-      box-shadow: 0 0 16px 0 rgba(50, 50, 50, 0.3);
+      box-shadow: 0 0 16px 0 #ffffff;
       color: #484848;
         }
     header h3 {
@@ -58,7 +54,7 @@
     }
 
     main {
-        margin-top: 100px;
+        margin-top: 150px;
         font-family: 'Roboto', sans-serif;
         width: 80%;
         height: 100%;
@@ -69,6 +65,8 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+
 
     form {
       text-align: center;
@@ -90,8 +88,23 @@
       background: #b4b4b4;
       border:  none;
     }
+
     li {
       list-style-type: none;
+    }
+
+    .cities {
+      min-height: 40px;
+    }
+
+    .cityName {
+      display: inline-block;
+      min-width: 200px;
+    }
+
+    .localTime {
+      display:inline-block;
+      font-size: 9px;
 
     }
 
@@ -112,21 +125,21 @@
       </form>
 
     <ul class="cities">
-      <li class="city">
-      <div class="cityName" style="display:inline-block; min-width:200px;">
+      <!-- <li class="city">
+        <div class="cityName" style="display:inline-block; min-width:200px;">
       San Francisco, United States
-      </div>
-      <p class="localTime" style="display:inline-block"> 3:45:02 Pacific Time </p>
-      </div>
+        </div>
+        <p class="localTime" style="display:inline-block"> 3:45:02 Pacific Time </p>
 
       <li class="city">
       <div class="cityName" style="display:inline-block; min-width:200px;">
       Sydney, Australia
       </div>
       <p class="localTime" style="display:inline-block"> 5:30:55 Australian? Time </p>
-      </div>
+      </div> -->
 
     </ul>
+
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </main>
 
@@ -138,33 +151,54 @@
   // print city name to screen
 
   var form = document.querySelector("button");
+  var city = document.querySelector("#query").value;
 
+  console.log(Date.now())
   form.addEventListener("click", function(event) {
   event.preventDefault();
   var city = document.querySelector("#query").value;
-  var citySearch = "https://maps.googleapis.com/maps/api/geocode/json?address="+city+"AIzaSyDMt5ED9spdeBxRVODEygE4Jx3gxzsDSB8";
-  var cityLongitude = "https://maps.googleapis.com/maps/api/geocode/json?address="+city+"AIzaSyDMt5ED9spdeBxRVODEygE4Jx3gxzsDSB8";
-  cityLongitude.results[0].geometry.location.lng
-  alert(cityLongitude)
-  var timezone = "https://maps.googleapis.com/maps/api/timezone/json?location="+cityLatitude +","+cityLongitude+"&timestamp=1331766000&key=AIzaSyBO51LsLFuXzH-euSxgo6jP28u0TKWF9rQ"
-  $.get(cityObject, addCity)
-})
+  var cityInQuotes = "\""+city+"\""
+  var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+cityInQuotes+"AIzaSyDMt5ED9spdeBxRVODEygE4Jx3gxzsDSB8";
+  $.get(url,displayCoordinates)
+});
 
 
+  function displayCoordinates(results) {
 
-function calcLatitude (results) {
-  results[0].geometry.location.lat.forEach(inputLatitude)
+  var city = document.querySelector("#query").value;
+  var cityInQuotes = "\""+city+"\""
+  var cityPrint = results.results[0].address_components[0].long_name;
+  var cityLatitude = results.results[0].geometry.location.lat;
+  var cityLongitude = results.results[0].geometry.location.lng;
 
-function inputLatitude(latitude) {
-  alert(calcLatitude)
+    var ul = document.querySelector("ul");
+    var li = document.createElement("li");
+    li.classList.add("city");
+    var div = document.createElement("div");
+    div.classList.add("cityName");
+    var p = document.createElement("p");
+    p.classList.add("localTime");
+
+    ul.appendChild(li);
+    li.appendChild(div);
+    li.appendChild(p);
+
+    div.textContent = cityPrint;
+    p.textContent = cityLatitude;
+
+    https://maps.googleapis.com/maps/api/timezone/outputFormat?parameters
+
+  var timezone = "https://maps.googleapis.com/maps/api/timezone/json?location="+cityLatitude +","+cityLongitude+"&timestamp=1331766000&key=AIzaSyABIzxzvB0mkx9Weqnm3VHT4970S1B5PhE"
 }
 
-  alert(cityLongitude)
 
-  var dstOffset = timezone.dstOffset
-  var rawOffset = timezone.rawOffset
-  var timeZoneID = timezone.timeZoneId
-}
+
+
+
+  // var dstOffset = timezone.dstOffset;
+  // var rawOffset = timezone.rawOffset;
+  // var timeZoneID = timezone.timeZoneId;
+
 
   </script>
 
