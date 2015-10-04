@@ -286,13 +286,15 @@ function DisplayCurrentTime() {
     function displayLocalTime (results) {
 
       var calcTime = convertToSeconds + results.rawOffset + results.dstOffset;
+      var calcTime2 = convertToSeconds
 
       // display local time
       var date = new Date(calcTime*1000);
+      var date2 = new Date(calcTime2*1000);
 
       var year = date.getFullYear();
       var month = date.getMonth()+1;
-      var day = date.getDate();
+      var day = date2.getDate();
       var hours = date.getUTCHours();
       var minutes = date.getMinutes();
       var seconds = date.getSeconds();
