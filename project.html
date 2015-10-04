@@ -129,10 +129,11 @@
       display:inline-block;
       font-size: 12px;
       font-weight: bold;
+      line-height: 1.5px;
     }
 
     .timezone {
-      font-size: 9px;
+      font-size: 11px;
     }
 
 
@@ -160,10 +161,10 @@
     <ul class="cities">
       <li class="city">
         <div class="cityName" style="display:inline-block; min-width:200px;">
-      San Francisco, United States
+      Buenos Aires
         </div>
-        <div class="localTime" style="display:inline-block;">3:45:02</div>
-        <p class="timezone" style="display:inline-block">  Pacific Time </p>
+        <div class="localTime" style="display:inline-block;">3:45:02
+        <p class="timezone" style="display:inline-block">  Pacific Time </p></div>
 
 
       <!-- <li class="city">
@@ -174,8 +175,9 @@
       </div> -->
 
     </ul>
-
+<blockquote class="description">
   Find local time anywhere in the world.  Compare multiple time zones at a glance, plan international meetings and business travel, or track market hours.
+</blockquote>
     </main>
 
 
@@ -231,43 +233,56 @@ function DisplayCurrentTime() {
     var ul = document.querySelector("ul");
     var li = document.createElement("li");
     li.classList.add("city");
-    var div = document.createElement("div");
-    div.classList.add("cityName");
+    var divCity = document.createElement("div");
+    divCity.classList.add("cityName");
+    var divLocalTime = document.createElement("div");
+    divLocalTime.classList.add("localTime");
     var p = document.createElement("p");
-    p.classList.add("localTime");
+    p.classList.add("timezone");
 
     ul.appendChild(li);
-    li.appendChild(div);
-    li.appendChild(p);
+    li.appendChild(divCity);
+    li.appendChild(divLocalTime)
+    divLocalTime.appendChild(p);
 
-    div.textContent = cityPrint;
+    divCity.textContent = cityPrint;
 
+    var convertToSeconds = new Date().getTime()/1000;
+    console.log(convertToSeconds);
 
-
-    var urlTimezone = "https://maps.googleapis.com/maps/api/timezone/json?location="+cityLatitude +","+cityLongitude+"&timestamp=1331766000&key=AIzaSyABIzxzvB0mkx9Weqnm3VHT4970S1B5PhE"
+    var urlTimezone = "https://maps.googleapis.com/maps/api/timezone/json?location="+cityLatitude +","+cityLongitude+"&timestamp="+convertToSeconds+"&key=AIzaSyABIzxzvB0mkx9Weqnm3VHT4970S1B5PhE"
+    console.log(urlTimezone);
     $.get(urlTimezone, displayLocalTime)
 
     // Can I do two jqueries in one function?
     function displayLocalTime (results) {
-        // var d = new Date();
-        // var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-        // var nd = new Date(utc + (3600000*offset));
-        // alert("The local time is " + nd.toLocaleString());
 
+      var p = document.querySelector("p")
+
+      var calcTime = (Math.floor((new Date()).getTime()) / 1000)+ results.rawOffset + results.dstOffset;
+      console.log(calcTime);
 
       p.textContent = results.timeZoneName;
+      divLocalTime.textContent = calcTime;
 
-      var calcTime = results.rawOffset + results.dstOffset;
       console.log(results.timeZoneName)
       console.log(calcTime)
 
 
+      var date = new Date(calcTime*1000);
+      // hours part from the timestamp
+      var hours = date.getHours();
+      // minutes part from the timestamp
+      var minutes = "0" + date.getMinutes();
+      // seconds part from the timestamp
+      var seconds = "0" + date.getSeconds();
+
+      // will display time in 10:30:23 format
+      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+      console.log(formattedTime);
+
     }
-
 }
-
-
-
 
 
 
