@@ -99,16 +99,16 @@
     </main>
 
     <script>
-    var sampleResult = {
-      "Search": [
-        {
-          "Title": "Cool Runnings",
-          "Type": "movie",
-          "Year": "1993",
-          "imdbID": "tt0106611"
-        }
-      ]
-    }
+    // var sampleResult = {
+    //   "Search": [
+    //     {
+    //       "Title": "Cool Runnings",
+    //       "Type": "movie",
+    //       "Year": "1993",
+    //       "imdbID": "tt0106611"
+    //     }
+    //   ]
+    // }
     //
     var form = document.querySelector("#movie-search-form");
     form.addEventListener("submit", formSubmitted);
@@ -116,7 +116,7 @@
     //
     function formSubmitted(event) {
       event.preventDefault();
-    
+      // alert(document.querySelector("#query").value); (for testing)
       var query = document.querySelector("#query").value;
       //$("#query").val()
       var url = "http://omdbapi.com/?s=" + query;
