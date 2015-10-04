@@ -38,7 +38,7 @@
       left: 0;
       width: 100%;
       border-width: 0px 0px 1px 0px;
-      background-color: white;
+      background: url("photos/pw_pattern.png") repeat;
       box-shadow: 0 0 16px 0 #ffffff;
       color: #484848;
         }
@@ -61,7 +61,7 @@
     }
 
     body {
-      background: url("photos/timessquare.jpg") no-repeat center/100%;
+      background: white;
     }
 
     main {
@@ -81,10 +81,11 @@
 
     form {
       text-align: center;
+      padding-bottom: 40px;
     }
 
     input#datepicker {
-      background: #f5f5f5;
+      background: rgba(245, 245, 245, 0.56);
       width: 100px;
       font-family: "roboto";
       padding: 10px;
@@ -136,6 +137,10 @@
       font-size: 11px;
     }
 
+    blockquote {
+      padding:0px;
+      margin: 0px;
+    }
 
     </style>
   </head>
@@ -144,7 +149,7 @@
   <body>
     <header>
       <div class="lblTime"></div>
-      <img src="photos/world.png" height=40px widgth=40px> <h3> World Clock</h3>
+      <h3> World Clock</h3>
     </header>
     <main>
 
@@ -154,9 +159,8 @@
         <button type = "submit">Add</button>
       </form>
 
-      <form>
 
-      </form>
+<section class="allCities">
 
     <ul class="cities">
       <li class="city">
@@ -175,6 +179,7 @@
       </div> -->
 
     </ul>
+</section>
 <blockquote class="description">
   Find local time anywhere in the world.  Compare multiple time zones at a glance, plan international meetings and business travel, or track market hours.
 </blockquote>
