@@ -38,9 +38,7 @@
       left: 0;
       width: 100%;
       border-width: 0px 0px 1px 0px;
-      background: url("photos/pw_pattern.png") repeat;
-      box-shadow: 0 0 16px 0 #ffffff;
-      color: #484848;
+      color: white;
         }
     header h3 {
       display:inline-block;
@@ -56,12 +54,17 @@
     }
     header div {
       float: left;
-      margin-top: 10px;
+      margin-top: 20px;
       font-size: 12px;
     }
 
     body {
-      background: white;
+      background: url("photos/timessquare.jpg") rgb(60, 60, 62) no-repeat center/100% fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      color:
     }
 
     main {
@@ -84,9 +87,9 @@
       padding-bottom: 40px;
     }
 
-    input#datepicker {
-      background: rgba(245, 245, 245, 0.56);
-      width: 100px;
+    input #datepicker {
+      background: rgba(255, 255, 255, 0.73);
+      width: 200px;
       font-family: "roboto";
       padding: 10px;
       font-size: 15px;
@@ -96,8 +99,9 @@
     }
 
     input {
-      background: #f5f5f5;
-      width: 200px;
+      background: rgba(255, 255, 255, 0);
+      width: 350px;
+      color: whitergb(64, 65, 73);
       font-family: "roboto";
       padding: 10px;
       font-size: 15px;
@@ -107,14 +111,25 @@
     button {
       padding: 10px;
       font: 14px  "Roboto", sans-serif white;
+      width: 75px;
       color: white;
-      background: #b4b4b4;
+      background: #57585e;
       border:  none;
-      margin-left: 4px;
+      margin-left: 15px;
     }
 
+    .allCities{
+      background: rgba(255, 255, 255, 0.86);
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    ul {
+      padding:10px;
+    }
     li {
       list-style-type: none;
+      text-align: center;
     }
 
     .cities {
@@ -124,22 +139,29 @@
     .cityName {
       display: inline-block;
       min-width: 200px;
+      font-family: 'Lato', cursive;
+      font-size:20px;
     }
 
     .localTime {
       display:inline-block;
-      font-size: 12px;
+      padding-left:10px;
+      font-size: 13px;
       font-weight: bold;
       line-height: 1.5px;
+      text-align: right;
     }
 
     .timezone {
-      font-size: 11px;
+      font-size: 13px;
+      text-align: right;
     }
 
     blockquote {
       padding:0px;
-      margin: 0px;
+      margin-top: 40px;
+      font-size: 10px;
+      color: rgba(47, 47, 47, 0.83)
     }
 
     </style>
@@ -147,20 +169,20 @@
 
 
   <body>
-    <header>
-      <div class="lblTime"></div>
-      <h3> World Clock</h3>
-    </header>
+<header>
+      <div class="lblTime">  Local Time</div>
+      <h3> find local time </h3>
+</header>
     <main>
-
+<section class="allCities">
       <form id="formAddCity">
-        <input type="text" id="query" placeholder="San Francisco">
-        <input id="datepicker" placeholder="09/27/2015"/>
+        <input type="text" id="query" placeholder="Enter your city here">
+
         <button type = "submit">Add</button>
       </form>
 
 
-<section class="allCities">
+
 
     <ul class="cities">
       <li class="city">
@@ -179,10 +201,11 @@
       </div> -->
 
     </ul>
-</section>
+
 <blockquote class="description">
-  Find local time anywhere in the world.  Compare multiple time zones at a glance, plan international meetings and business travel, or track market hours.
+   You can't schedule international calls at lunch time and expect people across the world to be awake for it.  Compare multiple time zones at a glance, plan your next skype chat, track market hours, and schedule those  global calls with this tool.
 </blockquote>
+</section>
     </main>
 
 
@@ -242,36 +265,46 @@ function DisplayCurrentTime() {
     divCity.classList.add("cityName");
     var divLocalTime = document.createElement("div");
     divLocalTime.classList.add("localTime");
-    var p = document.createElement("p");
-    p.classList.add("timezone");
+    var pTimezone = document.createElement("p");
+    pTimezone.classList.add("timezone");
 
     ul.appendChild(li);
     li.appendChild(divCity);
     li.appendChild(divLocalTime)
-    divLocalTime.appendChild(p);
+    li.appendChild(pTimezone);
 
     divCity.textContent = cityPrint;
 
     var convertToSeconds = new Date().getTime()/1000;
-    console.log(convertToSeconds);
+    console.log("1.timestamp or seconds after XXXX 1970: "+convertToSeconds);
 
     var urlTimezone = "https://maps.googleapis.com/maps/api/timezone/json?location="+cityLatitude +","+cityLongitude+"&timestamp="+convertToSeconds+"&key=AIzaSyABIzxzvB0mkx9Weqnm3VHT4970S1B5PhE"
-    console.log(urlTimezone);
+    console.log("2.url of api location" + urlTimezone);
     $.get(urlTimezone, displayLocalTime)
 
-    // Can I do two jqueries in one function?
+    //Two jqueries in one function?!
     function displayLocalTime (results) {
 
-      var p = document.querySelector("p")
+      var calcTime = convertToSeconds + results.rawOffset + results.dstOffset;
 
-      var calcTime = (Math.floor((new Date()).getTime()) / 1000)+ results.rawOffset + results.dstOffset;
-      console.log(calcTime);
+      // display local time
+      var date = new Date(calcTime*1000);
 
-      p.textContent = results.timeZoneName;
-      divLocalTime.textContent = calcTime;
+      var year = date.getFullYear();
+      var month = date.getMonth()+1;
+      var day = date.getDate();
+      var hours = date.getUTCHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
 
-      console.log(results.timeZoneName)
-      console.log(calcTime)
+
+      console.log("3.timestamp + offsets: " + calcTime);
+
+
+      divLocalTime.textContent = month+"/"+day+"  "+hours+":"+minutes+":"+seconds+" "+results.timeZoneName;
+
+      // timezone name is correct
+      console.log("4.timezone name" + results.timeZoneName)
 
 
       var date = new Date(calcTime*1000);
@@ -284,6 +317,7 @@ function DisplayCurrentTime() {
 
       // will display time in 10:30:23 format
       var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+      // This calc is correct but actual calc time is incorrect.
       console.log(formattedTime);
 
     }
